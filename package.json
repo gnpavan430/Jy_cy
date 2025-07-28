@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "cypress": "^14.5.2",
+    "cypress-mochawesome-reporter": "^4.0.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^5.0.0",
+    "mochawesome-report-generator": "^6.2.0",
+    "rimraf": "^6.0.1"
+  },
+  "scripts": {
+  "clean:reports": "rimraf cypress/reports/mochawesome",
+  "test:report": "npm run clean:reports && cypress run --browser chrome && mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome/merged-report.json && marge cypress/reports/mochawesome/merged-report.json -f report -o cypress/reports/mochawesome"
+}
+
+}
