@@ -1,11 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Setup Git Safe Directory') {
-            steps {
-                bat 'git config --global --add safe.directory C:/Users/gnpav/Documents/cypress_framework/.git'
-            }
-        }
         stage('Install') {
             steps {
                 sh 'npm ci'
