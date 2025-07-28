@@ -3,7 +3,11 @@ pipeline {
     stages {
         stage('Install') {
             steps {
-                sh 'npm ci'
+                if (isUnix()) {
+                    sh 'npm ci'
+                } else {
+                    bat 'npm ci'
+                }
             }
         }
         stage('Test & Report') {
