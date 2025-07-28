@@ -3,16 +3,24 @@ pipeline {
     stages {
         stage('Install') {
             steps {
-                if (isUnix()) {
-                    sh 'npm ci'
-                } else {
-                    bat 'npm ci'
+                script {
+                    if (isUnix()) {
+                        sh 'npm ci'
+                    } else {
+                        bat 'npm ci'
+                    }
                 }
             }
         }
         stage('Test & Report') {
             steps {
-                sh 'npm run test:report'
+                script {
+                    if (isUnix()) {
+                        sh 'npm run test:report'
+                    } else {
+                        bat 'npm run test:report'
+                    }
+                }
             }
         }
         stage('Archive Report') {
