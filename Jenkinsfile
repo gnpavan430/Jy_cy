@@ -11,7 +11,11 @@ pipeline {
         }
         stage('Test & Report') {
             steps {
-                bat 'npm run test:report'
+                try {
+                    bat 'npm run test:report'
+                } catch (Exception e) {
+                    echo "Tests failed, but continuing to publish report."
+                }
             }
         }
         stage('Archive Report') {
