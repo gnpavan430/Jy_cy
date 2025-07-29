@@ -11,10 +11,8 @@ pipeline {
         }
         stage('Test & Report') {
             steps {
-                try {
+                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
                     bat 'npm run test:report'
-                } catch (Exception e) {
-                    echo "Tests failed, but continuing to publish report."
                 }
             }
         }
