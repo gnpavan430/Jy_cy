@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        nodejs 'node16' // Use the exact name you configured
+        nodejs 'Node_jenkins'
     }
     stages {
         stage('Install') {
