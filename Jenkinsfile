@@ -1,26 +1,17 @@
 pipeline {
     agent any
+    tools {
+        nodejs 'node16' // Use the exact name you configured
+    }
     stages {
         stage('Install') {
             steps {
-                script {
-                    if (isUnix()) {
-                        sh 'npm ci'
-                    } else {
-                        bat 'npm ci'
-                    }
-                }
+                bat 'npm ci'
             }
         }
         stage('Test & Report') {
             steps {
-                script {
-                    if (isUnix()) {
-                        sh 'npm run test:report'
-                    } else {
-                        bat 'npm run test:report'
-                    }
-                }
+                bat 'npm run test:report'
             }
         }
         stage('Archive Report') {
